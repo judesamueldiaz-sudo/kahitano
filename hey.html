@@ -30,6 +30,38 @@
             color: #c9d1d9;
             font-size: 16px;
         }
+      .button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    background-color: #238636;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #2ea043;
+}
+
+#message {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 400px;
+    background-color: white;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+}
+
+#message[hidden] {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -37,5 +69,36 @@
         <h1>Welcome to GitHub</h1>
         <p>Your journey to better code starts here</p>
     </header>
+  <div class="button-container">
+    <button id="alertBtn">Click for Alert</button>
+
+    <button id="toggleBtn" aria-expanded="false">
+        Show Message
+    </button>
+
+    <p id="message" hidden>
+        Welcome! Your GitHub collaboration project is working!
+    </p>
+</div>
+  <script>
+    // Alert button
+    document.getElementById("alertBtn").addEventListener("click", function () {
+        alert("Welcome to GitHub! Happy coding!");
+    });
+
+    // Toggle button
+    const toggleBtn = document.getElementById("toggleBtn");
+    const message = document.getElementById("message");
+
+    toggleBtn.addEventListener("click", function () {
+        message.hidden = !message.hidden;
+
+        toggleBtn.textContent = message.hidden
+            ? "Show Message"
+            : "Hide Message";
+
+        toggleBtn.setAttribute("aria-expanded", String(!message.hidden));
+    });
+</script>
 </body>
 </html>
